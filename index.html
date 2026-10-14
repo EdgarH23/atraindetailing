@@ -1,703 +1,917 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>A Train Detailing | Mobile car detailing</title>
-<meta name="description" content="Mobile car detailing. We come to you with our own water and power.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070d" />
+<meta name="description" content="A Train Detailing — fully mobile car detailing. Interior, exterior, full details, headlight restoration, and more." />
+<title>A Train Detailing | Mobile Car Detailing</title>
 <style>
   :root{
-    --black:#000000;
-    --ink:#060A13;
-    --panel:#0B1220;
-    --line:#1A2540;
-    --blue:#0039A6;        /* route blue */
-    --blue-hi:#2F6BFF;     /* electric accent */
-    --ice:#A9C8FF;         /* shine highlight */
-    --text:#EAF0FA;
-    --muted:#8C99B3;
-    --ok:#3DDC97;
-    --err:#FF6B6B;
-    --radius-lg:22px;
-    --radius-sm:10px;
-    --wrap:1120px;
+    --bg:#05070d;
+    --panel:#0a0f1a;
+    --panel2:#0d1421;
+    --blue:#087cff;
+    --blue2:#34a6ff;
+    --white:#f5f8ff;
+    --muted:#aab5c9;
+    --line:rgba(52,166,255,.25);
+    --shadow:0 0 30px rgba(8,124,255,.16);
   }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
   html{scroll-behavior:smooth;scroll-padding-top:84px}
   body{
-    font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    font-variation-settings:"wdth" 100;
-    background:var(--black);
-    color:var(--text);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--white);
+    background:
+      radial-gradient(circle at 80% 5%, rgba(8,124,255,.16), transparent 24%),
+      radial-gradient(circle at 15% 15%, rgba(52,166,255,.09), transparent 22%),
+      linear-gradient(180deg,#05070d 0%,#05070d 70%,#070b13 100%);
+    line-height:1.5;
   }
-  img{max-width:100%}
-  a{color:inherit}
-  :focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px;border-radius:6px}
-  .wrap{width:min(var(--wrap),100% - 40px);margin-inline:auto}
-
-  /* ---------- Route bullet logo ---------- */
-  .bullet{
-    display:inline-grid;place-items:center;
-    width:36px;height:36px;border-radius:50%;
-    background:var(--blue);color:#fff;
-    font-weight:800;font-size:20px;line-height:1;
-    font-variation-settings:"wdth" 100;
-    box-shadow:0 0 0 2px rgba(47,107,255,.25);
-    flex-shrink:0;
-  }
-
-  /* ---------- Nav ---------- */
+  a{text-decoration:none;color:inherit}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
+  .container{width:min(1180px,92%);margin:auto}
   .nav{
     position:sticky;top:0;z-index:50;
-    padding-top:env(safe-area-inset-top,0px);
-    background:rgba(0,0,0,.72);
-    backdrop-filter:saturate(140%) blur(14px);
-    -webkit-backdrop-filter:saturate(140%) blur(14px);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s;
+    backdrop-filter:blur(16px);
+    background:rgba(5,7,13,.78);
+    border-bottom:1px solid rgba(52,166,255,.12)
   }
-  .nav.scrolled{border-bottom-color:var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:17px;letter-spacing:-.01em}
-  .brand small{display:block;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:0}
-  .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-  .nav-links a{text-decoration:none;color:var(--muted);font-size:15px;transition:color .2s}
-  .nav-links a:hover{color:var(--text)}
-  .nav-links .btn{color:#fff}
-  @media (max-width:720px){ .nav-links li:not(:last-child){display:none} }
+  .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}
+  .brand-mark{width:42px;height:42px;border:2px solid var(--blue2);border-radius:13px;display:grid;place-items:center;font-size:23px;font-weight:900;box-shadow:0 0 18px rgba(52,166,255,.25);transform:skew(-8deg)}
+  .brand span{font-size:1.05rem}
+  .brand small{display:block;font-size:.58rem;color:var(--blue2);letter-spacing:.22em;margin-top:-3px}
+  .nav-links{display:flex;gap:22px;align-items:center;font-size:.9rem;color:#dfe8f7}
+  .nav-links a:hover{color:var(--blue2)}
+  .nav-cta{padding:10px 15px;border:1px solid var(--blue2);border-radius:10px;box-shadow:0 0 18px rgba(8,124,255,.18)}
+  .menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#0b111d;cursor:pointer;place-items:center}
+  .menu-btn[aria-expanded="true"] .i-open,.menu-btn[aria-expanded="false"] .i-close{display:none}
+  .mobile-menu{display:none}
 
-  /* ---------- Buttons ---------- */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:13px 22px;border-radius:999px;border:1px solid transparent;
-    font:inherit;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;
-    transition:background .2s,border-color .2s,transform .15s;
-  }
-  .btn:active{transform:scale(.98)}
-  .btn.primary{background:var(--blue-hi);color:#fff}
-  .btn.primary:hover{background:#4a7fff}
-  .btn.ghost{border-color:var(--line);color:var(--text);background:transparent}
-  .btn.ghost:hover{border-color:var(--blue-hi)}
-  .btn.small{padding:9px 16px;font-size:14px}
-  .btn[disabled]{opacity:.55;cursor:not-allowed}
+  .hero{padding:92px 0 70px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#d9eaff;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  .bolt{color:var(--blue2);font-size:1.1rem}
+  h1{font-size:clamp(3rem,8vw,6.8rem);line-height:.9;margin:16px 0 18px;font-style:italic;letter-spacing:-.06em;text-transform:uppercase}
+  h1 .blue{color:var(--blue2);text-shadow:0 0 28px rgba(52,166,255,.26)}
+  .hero p{font-size:1.07rem;color:var(--muted);max-width:620px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;font-weight:900;letter-spacing:.03em;border:0;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease,background-color .2s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:disabled{opacity:.6;cursor:wait;transform:none}
+  .btn-primary{background:linear-gradient(135deg,#087cff,#34a6ff);color:#03101f;box-shadow:0 0 26px rgba(8,124,255,.3)}
+  .btn-primary:hover{box-shadow:0 0 36px rgba(8,124,255,.5)}
+  .btn-secondary{border:1px solid var(--line);background:#0b111d;color:var(--white)}
+  .btn-secondary:hover{border-color:var(--blue2)}
+  .hero-card{position:relative;border:1px solid var(--line);border-radius:24px;padding:12px;background:linear-gradient(180deg,rgba(13,20,33,.85),rgba(5,7,13,.92));box-shadow:var(--shadow)}
+  .hero-card img{display:block;width:100%;border-radius:17px;aspect-ratio:4/5;object-fit:cover;object-position:center}
+  .speed-line{height:2px;background:linear-gradient(90deg,transparent,var(--blue2),transparent);margin:18px 0}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .stat{padding:12px;border:1px solid rgba(52,166,255,.15);border-radius:12px;background:#09101b;text-align:center;cursor:pointer;width:100%;transition:border-color .2s ease,box-shadow .2s ease}
+  .stat:hover{border-color:var(--blue2);box-shadow:0 0 18px rgba(52,166,255,.18)}
+  .stat strong{display:block;font-size:1.2rem;color:var(--blue2)}
+  .stat span{font-size:.7rem;color:var(--muted)}
 
-  /* ---------- Hero + entrance ---------- */
-  .hero{
-    position:relative;min-height:calc(100svh - 68px);
-    display:flex;flex-direction:column;justify-content:center;
-    padding:72px 0 96px;overflow:hidden;
-  }
-  .hero::before{ /* headlight glow */
-    content:"";position:absolute;inset:auto -20% -40% -20%;height:80%;
-    background:radial-gradient(ellipse at 50% 100%,rgba(47,107,255,.22),transparent 60%);
-    pointer-events:none;opacity:0;animation:fade 1.6s ease 1s forwards;
-  }
-  .track{position:relative;height:72px;margin-bottom:40px}
-  .rail{
-    position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:4px;
-    background:linear-gradient(90deg,var(--blue) 0%,var(--blue-hi) 70%,transparent 100%);
-    transform-origin:left;transform:scaleX(0);
-    animation:rail .9s cubic-bezier(.7,0,.2,1) .15s forwards;
-  }
-  .track .bullet{
-    position:absolute;top:0;left:0;width:72px;height:72px;font-size:40px;
-    box-shadow:0 0 0 6px #000,0 0 40px rgba(47,107,255,.6);
-    transform:translateX(-120vw);
-    animation:arrive 1.15s cubic-bezier(.16,1,.3,1) .45s forwards;
-  }
-  .track .stop-dot{
-    position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;
-    background:#000;border:3px solid var(--blue-hi);opacity:0;
-    animation:fade .3s ease forwards;
-  }
-  .hero h1{
-    font-weight:800;
-    font-variation-settings:"wdth" 118;
-    font-size:clamp(46px,9vw,124px);
-    line-height:.92;letter-spacing:-.035em;
-    max-width:11ch;
-  }
-  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
-  .hero h1 .ln > span{
-    display:inline-block;transform:translateY(105%);
-    background:linear-gradient(105deg,var(--text) 0%,var(--text) 42%,#fff 47%,var(--ice) 50%,var(--text) 55%,var(--text) 100%);
-    background-size:300% 100%;background-position:100% 0;
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:rise .9s cubic-bezier(.16,1,.3,1) forwards,shine 1.4s ease-in-out 2.1s forwards;
-  }
-  .hero h1 .ln:nth-child(1) > span{animation-delay:1.05s,2.1s}
-  .hero h1 .ln:nth-child(2) > span{animation-delay:1.18s,2.2s}
-  .hero-sub{
-    margin-top:28px;max-width:46ch;color:var(--muted);font-size:clamp(17px,2vw,20px);
-    opacity:0;animation:fade .8s ease 1.55s forwards;
-  }
-  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;opacity:0;animation:fade .8s ease 1.7s forwards}
-  .hero-facts{
-    display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:56px;color:var(--muted);font-size:14px;
-    opacity:0;animation:fade .8s ease 1.9s forwards;
-  }
-  .hero-facts span{display:flex;align-items:center;gap:8px}
-  .hero-facts span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue-hi)}
+  section{padding:82px 0}
+  .section-head{text-align:center;max-width:760px;margin:0 auto 38px}
+  .section-head h2{margin:0;font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;font-style:italic;letter-spacing:-.03em}
+  .section-head p{color:var(--muted);margin:12px 0 0}
+  .section-head .accent{color:var(--blue2)}
+  .tap{color:#dce5f3;font-weight:700}
 
-  @keyframes rail{to{transform:scaleX(1)}}
-  @keyframes arrive{to{transform:translateX(0)}}
-  @keyframes rise{to{transform:translateY(0)}}
-  @keyframes shine{to{background-position:0 0}}
-  @keyframes fade{to{opacity:1}}
+  /* packages: tap a card to pick it */
+  .packages{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch}
+  .package{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#0c1320,#070b12);border:1px solid rgba(52,166,255,.22);border-radius:18px;padding:20px 17px;box-shadow:0 0 20px rgba(8,124,255,.08);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+  .package:hover{transform:translateY(-4px);box-shadow:0 0 28px rgba(8,124,255,.16)}
+  .package.selected{border-color:var(--blue2);box-shadow:0 0 0 1px var(--blue2),0 0 34px rgba(52,166,255,.3)}
+  .package.selected::after{content:'✓ SELECTED';position:absolute;top:-11px;right:14px;padding:4px 9px;border-radius:999px;background:linear-gradient(135deg,#087cff,#34a6ff);color:#03101f;font-size:.62rem;font-weight:900;letter-spacing:.08em}
+  .package h3{font-size:1.05rem;margin:0;text-transform:uppercase;font-style:italic}
+  .package .price{font-size:2rem;font-weight:900;margin:12px 0;color:var(--blue2)}
+  .package .subtitle{font-size:.8rem;color:var(--muted);min-height:42px}
+  .package ul{padding:0;margin:18px 0 20px;list-style:none}
+  .package li{margin:9px 0;font-size:.75rem;color:#dce5f3}
+  .package li::before{content:'✓';display:inline-grid;place-items:center;width:17px;height:17px;margin-right:7px;border-radius:50%;background:#0a82ff;color:white;font-size:.65rem;font-weight:900}
+  .package .pick{margin-top:auto;width:100%;padding:11px 12px;font-size:.78rem}
+  .special-note{margin-top:12px;padding:9px 10px;border:1px solid rgba(255,210,89,.6);border-radius:10px;background:rgba(255,210,89,.08);color:#ffe49a;font-size:.7rem;font-weight:800;text-align:center;text-transform:uppercase}
 
+  /* size + add-on tiles are buttons now */
+  .adjust-grid,.addon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .adjust,.addon{background:#0a101a;border:1px solid rgba(52,166,255,.16);border-radius:15px;padding:18px;text-align:center;width:100%;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
+  .adjust:hover,.addon:hover{border-color:rgba(52,166,255,.5)}
+  .adjust[aria-pressed="true"],.addon[aria-pressed="true"]{border-color:var(--blue2);background:rgba(52,166,255,.10);box-shadow:0 0 22px rgba(52,166,255,.18)}
+  .adjust strong,.addon strong{display:block;color:var(--blue2);font-size:1.25rem;margin-bottom:4px}
+  .adjust span,.addon span{color:var(--muted);font-size:.78rem}
+  .adjust[aria-pressed="true"] span{color:#dce5f3}
+  .addon-grid{grid-template-columns:repeat(3,1fr)}
+  .addon{text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .addon strong{margin:0;white-space:nowrap}
+  .addon .name{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--white);font-size:1rem}
+  .addon .check{width:20px;height:20px;flex-shrink:0;border-radius:50%;border:1.5px solid rgba(52,166,255,.45);display:grid;place-items:center;font-size:.7rem;font-weight:900;color:transparent;transition:background-color .2s ease,color .2s ease}
+  .addon[aria-pressed="true"] .check{background:var(--blue);border-color:var(--blue);color:#fff}
+  .addon:disabled{opacity:.35;cursor:not-allowed}
+
+  .booking-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+  .booking-card,.availability-card{background:linear-gradient(180deg,#0c1320,#070b12);border:1px solid rgba(52,166,255,.22);border-radius:20px;padding:24px;box-shadow:0 0 24px rgba(8,124,255,.08)}
+  .booking-card h3,.availability-card h3{margin:0 0 16px;font-size:1.15rem;text-transform:uppercase;font-style:italic}
+  .availability-card .tap-hint{margin:-10px 0 14px;font-size:.78rem;color:var(--muted)}
+  .booking-form{display:grid;gap:16px}
+  .booking-form label,.booking-form .label-like{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#dfe8f7}
+  .field-label,.label-like{display:block;margin-bottom:7px}
+  .booking-form select,.booking-form input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid rgba(52,166,255,.18);background:#070d16;color:var(--white);font:inherit;outline:none;color-scheme:dark}
+  .booking-form select:focus,.booking-form input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(52,166,255,.12)}
+  .booking-form [aria-invalid="true"]{border-color:#ff6b6b}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .service-note{margin-top:7px;font-size:.72rem;font-weight:800;color:#ffe49a;text-transform:uppercase}
+  .time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:9px}
+  .time-option{position:relative}
+  .time-option input{position:absolute;opacity:0;pointer-events:none}
+  .time-option label{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:44px;padding:9px 10px;border:1px solid rgba(52,166,255,.18);border-radius:10px;background:#070d16;color:#dce5f3;text-align:center;cursor:pointer;text-transform:none;letter-spacing:0;font-size:.82rem;transition:border-color .2s ease,background-color .2s ease}
+  .time-option label:hover{border-color:rgba(52,166,255,.5)}
+  .time-option label small{font-size:.62rem;color:#5f6b7d;text-transform:uppercase;letter-spacing:.08em}
+  .time-option input:checked + label{border-color:var(--blue2);background:rgba(52,166,255,.12);color:#fff;box-shadow:0 0 14px rgba(52,166,255,.12)}
+  .time-option input:focus-visible + label{outline:2px solid var(--blue2);outline-offset:2px}
+  .time-option.disabled label{border-color:rgba(255,255,255,.06);background:#0a0e15;color:#5f6b7d;cursor:not-allowed;text-decoration:line-through}
+  .time-option.disabled label small{text-decoration:none}
+  .time-note{font-size:.72rem;color:var(--muted);margin-top:8px}
+  .chip-grid{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{position:relative}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .booking-form .chip label{display:inline-flex;padding:8px 12px;border:1px solid rgba(52,166,255,.18);border-radius:999px;background:#070d16;color:#dce5f3;cursor:pointer;text-transform:none;letter-spacing:0;font-size:.78rem;font-weight:700;transition:border-color .2s ease,background-color .2s ease}
+  .chip label b{color:var(--blue2);margin-left:6px}
+  .chip input:checked + label{border-color:var(--blue2);background:rgba(52,166,255,.12);color:#fff}
+  .chip input:focus-visible + label{outline:2px solid var(--blue2);outline-offset:2px}
+  .chip input:disabled + label{opacity:.35;cursor:not-allowed}
+  .estimate{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .estimate div{padding:12px 14px;border-radius:11px;background:#070d16;border:1px solid rgba(52,166,255,.15)}
+  .estimate span{display:block;font-size:.66rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+  .estimate strong{display:block;margin-top:2px;font-size:1.35rem;color:var(--blue2)}
+  .booking-form .btn-primary{width:100%}
+  .status{padding:10px 12px;border-radius:10px;background:rgba(52,166,255,.08);border:1px solid rgba(52,166,255,.15);font-size:.78rem;color:#dce5f3}
+  .status strong{color:var(--blue2)}
+  .status.error{background:rgba(255,107,107,.08);border-color:rgba(255,107,107,.35);color:#ffd6d6}
+  .status.error strong{color:#ff9b9b}
+  .schedule{display:grid;gap:9px}
+  .day-row{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:center;padding:11px 12px;border-radius:11px;background:#070d16;border:1px solid rgba(52,166,255,.10);width:100%;text-align:left;cursor:pointer;transition:border-color .2s ease,background-color .2s ease}
+  .day-row:hover{border-color:rgba(52,166,255,.45)}
+  .day-row.active{border-color:var(--blue2);background:rgba(52,166,255,.08)}
+  .day-row .day{display:block;font-weight:900;font-size:.8rem;text-transform:uppercase}
+  .day-row .day small{display:block;color:#6d7a8d;font-size:.63rem;margin-top:2px}
+  .day-row.active .day small{color:var(--blue2)}
+  .blocks{display:flex;flex-wrap:wrap;gap:7px}
+  .open-block,.unavailable-block{padding:7px 9px;border-radius:999px;font-size:.68rem;font-weight:800}
+  .open-block{background:rgba(52,166,255,.10);color:#cfeaff;border:1px solid rgba(52,166,255,.16)}
+  .unavailable-block{background:rgba(255,255,255,.045);color:#78859a;border:1px solid rgba(255,255,255,.10)}
+  .availability-note{margin-top:13px;font-size:.72rem;color:var(--muted)}
+
+  .book-done:focus{outline:none}
+  .book-done .done-mark{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#087cff,#34a6ff);color:#03101f;font-size:1.5rem;font-weight:900;box-shadow:0 0 30px rgba(8,124,255,.45)}
+  .book-done h4{margin:16px 0 6px;font-size:1.6rem;line-height:1.05;text-transform:uppercase;font-style:italic;letter-spacing:-.02em}
+  .book-done p{margin:0 0 8px;color:var(--muted)}
+  .book-done .when{color:var(--white);font-weight:700}
+  .book-done .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+  @media (max-width:900px){.booking-wrap{grid-template-columns:1fr}}
+  @media (max-width:600px){.time-grid{grid-template-columns:repeat(3,1fr)}.day-row{grid-template-columns:1fr}.blocks{margin-top:-2px}.form-row{grid-template-columns:1fr}}
+
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{padding:24px;border:1px solid rgba(52,166,255,.15);border-radius:18px;background:#090f18}
+  .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#087cff,#34a6ff);color:#04101c;font-weight:900;margin-bottom:14px}
+  .step h3{margin:0 0 8px;font-size:1.05rem}
+  .step p{margin:0;color:var(--muted);font-size:.9rem}
+
+  .quote-box{border:1px solid var(--line);background:linear-gradient(145deg,#0a1421,#080c14);border-radius:24px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;box-shadow:var(--shadow)}
+  .quote-box h2{font-size:clamp(2rem,4vw,3.2rem);margin:0;text-transform:uppercase;font-style:italic;line-height:1}
+  .quote-box p{color:var(--muted)}
+  .contact-list{display:grid;gap:10px}
+  .contact{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid rgba(52,166,255,.15);border-radius:12px;background:#070d16;transition:border-color .2s ease}
+  .contact:hover{border-color:var(--blue2)}
+  .contact span{color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em}
+  .contact strong{font-size:.94rem}
+
+  footer{padding:28px 0 50px;color:#7e8ba0;border-top:1px solid rgba(52,166,255,.1)}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .footer-brand{font-weight:900;color:#cbd7e8}
+  .footer-note{font-size:.78rem;max-width:700px}
+  .micro{font-size:.72rem;color:#667387;margin-top:8px}
+
+  @media (max-width:1050px){
+    .packages{grid-template-columns:repeat(2,1fr)}
+    .hero-grid,.quote-box{grid-template-columns:1fr}
+    .adjust-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:700px){
+    .nav-links{display:none}
+    .menu-btn{display:grid}
+    .mobile-menu:not([hidden]){display:grid;padding:4px 4% 14px;border-top:1px solid rgba(52,166,255,.12)}
+    .mobile-menu a{padding:14px 2px;font-weight:900;font-style:italic;text-transform:uppercase;border-bottom:1px solid rgba(52,166,255,.10)}
+    .mobile-menu a:last-child{border-bottom:0;color:var(--blue2)}
+    .hero{padding-top:62px}
+    section{padding:62px 0}
+    .packages,.addon-grid,.process{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr 1fr}
+    .hero-card{max-width:560px;margin:auto}
+  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .rail,.track .bullet,.track .stop-dot,.hero h1 .ln > span,.hero-sub,.hero-cta,.hero-facts,.hero::before{
-      animation:none!important;transform:none!important;opacity:1!important;
-    }
-    .hero h1 .ln > span{background-position:0 0}
+    *,*::before,*::after{transition:none!important}
   }
-
-  /* ---------- Sections ---------- */
-  section.block{padding:110px 0;border-top:1px solid var(--line)}
-  .head{max-width:620px;margin-bottom:56px}
-  .head h2{
-    font-weight:800;font-variation-settings:"wdth" 112;
-    font-size:clamp(34px,5vw,56px);line-height:1;letter-spacing:-.03em;
-  }
-  .head p{margin-top:16px;color:var(--muted);font-size:18px}
-
-  /* ---------- Packages as stops on a line ---------- */
-  .line{position:relative;list-style:none;padding-left:56px}
-  .line::before{
-    content:"";position:absolute;left:17px;top:22px;bottom:22px;width:4px;border-radius:4px;
-    background:linear-gradient(var(--blue),var(--blue-hi));
-  }
-  .stop{position:relative;padding:28px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px 32px;align-items:start}
-  .stop:last-child{border-bottom:0}
-  .stop::before{
-    content:"";position:absolute;left:-46px;top:36px;width:20px;height:20px;border-radius:50%;
-    background:#000;border:4px solid var(--blue-hi);
-  }
-  .stop.flagship::before{background:var(--blue-hi);box-shadow:0 0 0 6px rgba(47,107,255,.2)}
-  .stop h3{font-size:clamp(24px,3vw,32px);font-weight:700;font-variation-settings:"wdth" 108;letter-spacing:-.02em}
-  .stop .meta{color:var(--muted);font-size:15px;margin-top:4px}
-  .stop ul{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-  .stop li{font-size:14px;padding:6px 12px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:#cdd6e6}
-  .stop .price{text-align:right}
-  .stop .price strong{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:800;font-variation-settings:"wdth" 90;letter-spacing:-.02em}
-  .stop .price span{color:var(--muted);font-size:14px}
-  .stop .price .btn{margin-top:12px}
-  @media (max-width:640px){
-    .line{padding-left:44px}
-    .line::before{left:11px}
-    .stop{grid-template-columns:1fr}
-    .stop::before{left:-40px}
-    .stop .price{text-align:left;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-    .stop .price .btn{margin-top:0}
-  }
-
-  /* ---------- How it works ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
-  .step{padding:28px;border-radius:var(--radius-lg);background:var(--ink);border:1px solid var(--line);counter-increment:s}
-  .step::before{
-    content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;
-    border:2px solid var(--blue-hi);color:var(--blue-hi);font-weight:700;margin-bottom:20px;
-  }
-  .step h3{font-size:20px;font-weight:700;margin-bottom:6px}
-  .step p{color:var(--muted)}
-  @media (max-width:820px){.steps{grid-template-columns:1fr}}
-
-  /* ---------- Booking ---------- */
-  .booking{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start}
-  @media (max-width:960px){.booking{grid-template-columns:1fr}}
-  form fieldset{border:0;margin-bottom:40px}
-  form legend{font-size:20px;font-weight:700;margin-bottom:16px;letter-spacing:-.01em}
-  .choices{display:grid;gap:10px}
-  .choices.cols-2{grid-template-columns:repeat(2,1fr)}
-  .choices.cols-3{grid-template-columns:repeat(3,1fr)}
-  @media (max-width:560px){.choices.cols-2,.choices.cols-3{grid-template-columns:1fr}}
-  .choice{position:relative}
-  .choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
-  .choice label{
-    display:flex;justify-content:space-between;align-items:center;gap:12px;
-    padding:16px 18px;border-radius:var(--radius-sm);
-    background:var(--ink);border:1px solid var(--line);cursor:pointer;
-    transition:border-color .15s,background .15s;
-  }
-  .choice label b{font-weight:600}
-  .choice label span{color:var(--muted);font-size:14px;white-space:nowrap}
-  .choice input:hover + label{border-color:#2c3b60}
-  .choice input:checked + label{border-color:var(--blue-hi);background:rgba(47,107,255,.1)}
-  .choice input:checked + label span{color:var(--ice)}
-  .choice input:focus-visible + label{outline:2px solid var(--blue-hi);outline-offset:2px}
-
-  .fields{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .fields .full{grid-column:1/-1}
-  @media (max-width:560px){.fields{grid-template-columns:1fr}}
-  .field label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
-  .field input,.field select,.field textarea{
-    width:100%;padding:14px 16px;border-radius:var(--radius-sm);
-    background:var(--ink);border:1px solid var(--line);color:var(--text);
-    font:inherit;font-size:16px;transition:border-color .15s;
-  }
-  .field textarea{min-height:96px;resize:vertical}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue-hi)}
-  .field input::placeholder,.field textarea::placeholder{color:#55627c}
-  .field input[type=date]{color-scheme:dark}
-  .field.invalid input,.field.invalid select{border-color:var(--err)}
-  .field .msg{display:none;font-size:13px;color:var(--err);margin-top:6px}
-  .field.invalid .msg{display:block}
-
-  /* Ticket (estimate + submit) */
-  .ticket{
-    position:sticky;top:92px;
-    border-radius:var(--radius-lg);overflow:hidden;
-    background:var(--panel);border:1px solid var(--line);
-  }
-  .ticket-top{display:flex;align-items:center;gap:12px;padding:20px 24px;background:var(--blue)}
-  .ticket-top .bullet{background:#fff;color:var(--blue);box-shadow:none}
-  .ticket-top b{display:block;font-size:16px}
-  .ticket-top small{font-size:13px;opacity:.8}
-  .ticket-body{padding:22px 24px}
-  .row{display:flex;justify-content:space-between;gap:16px;padding:8px 0;font-size:15px}
-  .row span:first-child{color:var(--muted)}
-  .row span:last-child{text-align:right}
-  .perf{height:1px;margin:14px -24px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
-  .total{display:flex;justify-content:space-between;align-items:baseline}
-  .total span{color:var(--muted)}
-  .total strong{font-size:40px;font-weight:800;font-variation-settings:"wdth" 90;letter-spacing:-.02em}
-  .ticket .btn{width:100%;margin-top:18px;padding:16px}
-  .fine{font-size:13px;color:var(--muted);margin-top:12px}
-  @media (max-width:960px){.ticket{position:static}}
-
-  .status{display:none;margin-top:14px;padding:12px 14px;border-radius:var(--radius-sm);font-size:14px}
-  .status.err{display:block;background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.4);color:#ffc2c2}
-
-  /* Confirmation */
-  .done{display:none;text-align:center;padding:12px 0 4px}
-  .done .check{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:rgba(61,220,151,.12);color:var(--ok);font-size:28px}
-  .done h3{font-size:22px;margin-bottom:6px}
-  .done p{color:var(--muted);font-size:15px}
-  .done .ref{display:inline-block;margin-top:14px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-weight:600;letter-spacing:.04em}
-  .ticket.booked .ticket-body > :not(.done){display:none}
-  .ticket.booked .done{display:block}
-
-  /* ---------- FAQ ---------- */
-  .faq{max-width:760px}
-  .faq details{border-bottom:1px solid var(--line)}
-  .faq summary{
-    list-style:none;cursor:pointer;padding:22px 0;font-size:18px;font-weight:600;
-    display:flex;justify-content:space-between;gap:16px;align-items:center;
-  }
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";font-size:24px;color:var(--blue-hi);transition:transform .2s}
-  .faq details[open] summary::after{transform:rotate(45deg)}
-  .faq details p{padding:0 0 22px;color:var(--muted);max-width:62ch}
-
-  /* ---------- Footer ---------- */
-  footer{border-top:1px solid var(--line);padding:56px 0 calc(40px + env(safe-area-inset-bottom,0px))}
-  .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
-  .foot h4{font-size:14px;color:var(--muted);font-weight:500;margin-bottom:12px}
-  .foot p,.foot a{font-size:15px;text-decoration:none;display:block;margin-bottom:6px}
-  .foot a:hover{color:var(--blue-hi)}
-  .copy{margin-top:40px;font-size:13px;color:#55627c}
-  @media (max-width:720px){.foot{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<!-- ================= NAV ================= -->
-<nav class="nav" id="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="brand" aria-label="A Train Detailing home">
-      <span class="bullet">A</span>
-      <span>A Train Detailing<small>Mobile detailing</small></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#packages">Packages</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#book" class="btn primary small">Book now</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main id="top">
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="track" aria-hidden="true">
-        <span class="rail"></span>
-        <span class="stop-dot" style="left:38%;animation-delay:.75s"></span>
-        <span class="stop-dot" style="left:62%;animation-delay:.85s"></span>
-        <span class="stop-dot" style="left:86%;animation-delay:.95s"></span>
-        <span class="bullet">A</span>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <div class="brand-mark">A</div>
+        <div><span>A TRAIN</span><small>DETAILING</small></div>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#addons">Add-Ons</a>
+        <a href="#availability">Availability</a>
+        <a href="#booking" class="nav-cta">Book a Detail</a>
       </div>
-      <h1>
-        <span class="ln"><span>Detailed where</span></span>
-        <span class="ln"><span>it's parked.</span></span>
-      </h1>
-      <p class="hero-sub">Mobile car detailing across the Inland Empire. We bring our own water and power, so all you do is hand over the keys.</p>
-      <div class="hero-cta">
-        <a href="#book" class="btn primary">Book a detail</a>
-        <a href="#packages" class="btn ghost">See packages</a>
-      </div>
-      <div class="hero-facts">
-        <span>We come to you</span>
-        <span>Own water and power</span>
-        <span>Pay after the job</span>
-      </div>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="i-open" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M1 1h16M1 7h16M1 13h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="i-close" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
     </div>
-  </section>
-
-  <!-- ================= PACKAGES ================= -->
-  <section class="block" id="packages">
-    <div class="wrap">
-      <div class="head">
-        <h2>Pick your stop</h2>
-        <p>Each package includes everything from the one before it. Prices are for a standard car; bigger vehicles adjust in the estimate.</p>
-      </div>
-      <ol class="line" id="stopList"></ol>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#services">Services</a>
+      <a href="#addons">Add-Ons</a>
+      <a href="#availability">Availability</a>
+      <a href="#booking">Book a Detail</a>
     </div>
-  </section>
+  </nav>
 
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="block" id="how">
-    <div class="wrap">
-      <div class="head">
-        <h2>How it works</h2>
-        <p>Three steps, no waiting room.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><h3>Book online</h3><p>Pick a package, a time, and where your car will be. Takes about a minute.</p></div>
-        <div class="step"><h3>We pull up</h3><p>We text you when we're on the way and set up right next to your car.</p></div>
-        <div class="step"><h3>Drive off clean</h3><p>Do a walk-around with us, then pay by card, Zelle, or cash.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= BOOKING ================= -->
-  <section class="block" id="book">
-    <div class="wrap">
-      <div class="head">
-        <h2>Book a detail</h2>
-        <p>Send a request and we'll text you to confirm the time.</p>
-      </div>
-
-      <div class="booking">
-        <form id="bookingForm" novalidate>
-          <fieldset>
-            <legend>Package</legend>
-            <div class="choices cols-2" id="pkgChoices"></div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Vehicle size</legend>
-            <div class="choices cols-3" id="sizeChoices"></div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Add-ons</legend>
-            <div class="choices cols-2" id="addonChoices"></div>
-          </fieldset>
-
-          <fieldset>
-            <legend>When and where</legend>
-            <div class="fields">
-              <div class="field">
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date" required>
-                <div class="msg">Choose a date.</div>
-              </div>
-              <div class="field">
-                <label for="time">Time</label>
-                <select id="time" name="time" required>
-                  <option value="">Choose a time</option>
-                  <option>8:00 AM</option><option>10:00 AM</option>
-                  <option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option>
-                </select>
-                <div class="msg">Choose a time.</div>
-              </div>
-              <div class="field full">
-                <label for="address">Service address</label>
-                <input type="text" id="address" name="address" placeholder="Street, city, ZIP" autocomplete="street-address" required>
-                <div class="msg">Enter the address where the car will be.</div>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Your info</legend>
-            <div class="fields">
-              <div class="field">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" autocomplete="name" required>
-                <div class="msg">Enter your name.</div>
-              </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="(909) 555-0123" autocomplete="tel" required>
-                <div class="msg">Enter a 10-digit phone number.</div>
-              </div>
-              <div class="field">
-                <label for="email">Email (optional)</label>
-                <input type="email" id="email" name="email" autocomplete="email">
-                <div class="msg">Check the email format.</div>
-              </div>
-              <div class="field">
-                <label for="vehicle">Vehicle</label>
-                <input type="text" id="vehicle" name="vehicle" placeholder="2019 Honda Civic">
-              </div>
-              <div class="field full">
-                <label for="notes">Anything we should know? (optional)</label>
-                <textarea id="notes" name="notes" placeholder="Gate code, pet hair, stains, parking spot..."></textarea>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-
-        <!-- Ticket: live estimate + submit -->
-        <aside class="ticket" id="ticket" aria-live="polite">
-          <div class="ticket-top">
-            <span class="bullet">A</span>
-            <div><b>Your estimate</b><small>Final price confirmed on site</small></div>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="bolt">⚡</span> Fully Mobile • Interior • Exterior</div>
+          <h1>A <span class="blue">TRAIN</span><br>DETAILING</h1>
+          <div class="speed-line"></div>
+          <p>Professional mobile car detailing with a fast, clean, polished finish. We come to you and take the work off your hands.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+19512069585">CALL / TEXT 951-206-9585</a>
+            <a class="btn btn-secondary" href="https://instagram.com/atrain.detailing" target="_blank" rel="noopener">@atrain.detailing</a>
           </div>
-          <div class="ticket-body">
-            <div class="row"><span>Package</span><span id="tPkg">-</span></div>
-            <div class="row"><span>Vehicle</span><span id="tSize">-</span></div>
-            <div class="row"><span>Add-ons</span><span id="tAddons">None</span></div>
-            <div class="row"><span>When</span><span id="tWhen">Not set</span></div>
-            <div class="perf"></div>
-            <div class="total"><span>Estimate</span><strong id="tTotal">$0</strong></div>
-            <button type="submit" form="bookingForm" class="btn primary" id="submitBtn">Request booking</button>
-            <div class="status" id="status"></div>
-            <p class="fine">No payment now. You pay after the job is done.</p>
-
-            <div class="done">
-              <div class="check">✓</div>
-              <h3>Booking requested</h3>
-              <p>We'll text you shortly to confirm your time.</p>
-              <span class="ref" id="refNum"></span>
-              <div><button class="btn ghost small" id="newBooking" style="margin-top:18px">Book another car</button></div>
+        </div>
+        <div>
+          <div class="hero-card">
+            <img src="a_train_branding_hero.png" alt="A Train Detailing branded hero artwork" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg,#0d1421,#05070d)'; this.parentElement.style.minHeight='520px';" />
+            <div class="stats">
+              <button class="stat" type="button" data-service="Maintenance Wash"><strong>$40+</strong><span>Maintenance</span></button>
+              <button class="stat" type="button" data-service="Gold Interior Revamp"><strong>$100+</strong><span>Gold Interior</span></button>
+              <button class="stat" type="button" data-service="Full Interior + Exterior Detail"><strong>$150+</strong><span>Full Detail</span></button>
             </div>
           </div>
-        </aside>
+          <div class="micro">Starting prices. Final quote depends on vehicle size and condition.</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= FAQ ================= -->
-  <section class="block" id="faq">
-    <div class="wrap">
-      <div class="head"><h2>Questions</h2></div>
-      <div class="faq">
-        <details><summary>Do I need to provide water or power?</summary><p>No. We carry our own water tank and generator, so we can work in a driveway, parking lot, or street spot.</p></details>
-        <details><summary>Can you detail at an apartment or my job?</summary><p>Yes, as long as there's room around the car and the property allows it. Leave any gate codes or parking notes in the booking form.</p></details>
-        <details><summary>What if it rains?</summary><p>We'll text you to move your booking to the next open slot at no charge.</p></details>
-        <details><summary>How do I pay?</summary><p>After the job, by card, Zelle, or cash. Nothing is charged when you book.</p></details>
-        <details><summary>How long does a detail take?</summary><p>From about an hour for an Express wash up to a full day for Ceramic. Each package lists its time above.</p></details>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Choose Your <span class="accent">Detail</span></h2>
+          <p>Every service is built to give you a noticeably cleaner, fresher, more finished vehicle. <span class="tap">Tap a package to book it.</span></p>
+        </div>
+        <div class="packages">
+          <article class="package" data-service="Maintenance Wash">
+            <h3>Maintenance Wash</h3>
+            <div class="price" data-price="40">$40+</div>
+            <div class="subtitle">Keeps a maintained vehicle clean &amp; fresh.</div>
+            <div class="special-note">Multi-car services or returning clients only</div>
+            <ul>
+              <li>Hand wash</li><li>Wheels cleaned</li><li>Tire shine</li><li>Interior vacuum</li><li>Windows cleaned</li><li>Exterior dry</li>
+            </ul>
+            <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
+          </article>
+          <article class="package" data-service="Exterior Detail">
+            <h3>Exterior Detail</h3>
+            <div class="price" data-price="60">$60+</div>
+            <div class="subtitle">A more thorough exterior clean and finish.</div>
+            <ul>
+              <li>Foam + hand wash</li><li>Wheels, tires &amp; wheel wells</li><li>Bug &amp; grime removal</li><li>Exterior glass</li><li>Door jambs</li><li>Tire shine</li><li>Spray protection</li>
+            </ul>
+            <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
+          </article>
+          <article class="package" data-service="Basic Interior">
+            <h3>Basic Interior</h3>
+            <div class="price" data-price="70">$70+</div>
+            <div class="subtitle">Clean, vacuumed and refreshed.</div>
+            <ul>
+              <li>Thorough vacuum</li><li>Dash &amp; console</li><li>Doors &amp; pockets</li><li>Cupholders &amp; storage</li><li>Interior windows</li><li>Seats &amp; floors cleaned</li>
+            </ul>
+            <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
+          </article>
+          <article class="package" data-service="Gold Interior Revamp">
+            <h3>Gold Interior Revamp</h3>
+            <div class="price" data-price="100">$100+</div>
+            <div class="subtitle">Deep interior clean for a like-new feel.</div>
+            <ul>
+              <li>Everything in Basic Interior</li><li>Deep seat &amp; carpet cleaning</li><li>Steam cleaning</li><li>Stain treatment</li><li>Odor treatment</li><li>Plastics cleaned &amp; protected</li>
+            </ul>
+            <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
+          </article>
+          <article class="package" data-service="Full Interior + Exterior Detail">
+            <h3>Full Interior + Exterior</h3>
+            <div class="price" data-price="150">$150+</div>
+            <div class="subtitle">The complete transformation.</div>
+            <ul>
+              <li>Everything in Gold Interior</li><li>Complete exterior detail</li><li>Wheels &amp; tires</li><li>Exterior glass</li><li>Paint protection</li><li>Finished presentation</li>
+            </ul>
+            <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <a href="#top" class="brand" style="margin-bottom:14px"><span class="bullet">A</span><span>A Train Detailing</span></a>
-        <p style="color:var(--muted);max-width:36ch">Mobile car detailing across the Inland Empire.</p>
+    <section id="addons">
+      <div class="container">
+        <div class="section-head"><h2>Vehicle Size <span class="accent">Adjustments</span></h2><p>Larger vehicles require more time, product and work area. <span class="tap">Tap yours and every price updates.</span></p></div>
+        <div class="adjust-grid" role="group" aria-label="Vehicle size">
+          <button type="button" class="adjust" data-size="Sedan / Coupe" aria-pressed="true"><strong>BASE</strong><span>Sedan / Coupe</span></button>
+          <button type="button" class="adjust" data-size="Small SUV" aria-pressed="false"><strong>+$20</strong><span>Small SUV</span></button>
+          <button type="button" class="adjust" data-size="Large SUV / Truck" aria-pressed="false"><strong>+$40</strong><span>Large SUV / Truck</span></button>
+          <button type="button" class="adjust" data-size="3-Row SUV / Minivan" aria-pressed="false"><strong>+$60</strong><span>3-Row SUV / Minivan</span></button>
+        </div>
+
+        <div class="section-head" style="margin-top:64px"><h2>Popular <span class="accent">Add-Ons</span></h2><p><span class="tap">Tap any add-on to include it in your booking.</span></p></div>
+        <div class="addon-grid" role="group" aria-label="Add-ons">
+          <button type="button" class="addon" data-addon="Headlight Restoration" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Headlight Restoration</span><strong>$50–80</strong></button>
+          <button type="button" class="addon" data-addon="Pet Hair Removal" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Pet Hair Removal</span><strong>+$25–75</strong></button>
+          <button type="button" class="addon" data-addon="Heavy Stain Treatment" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Heavy Stain Treatment</span><strong>+$20–50</strong></button>
+          <button type="button" class="addon" data-addon="Excessive Trash" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Excessive Trash</span><strong>+$20+</strong></button>
+          <button type="button" class="addon" data-addon="Engine Bay Cleaning" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Engine Bay Cleaning</span><strong>$40–60</strong></button>
+          <button type="button" class="addon" data-addon="Clay Treatment" aria-pressed="false"><span class="name"><span class="check" aria-hidden="true">✓</span>Clay Treatment</span><strong>+$50</strong></button>
+        </div>
       </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="tel:+19095550123">(909) 555-0123</a>
-        <a href="mailto:book@atraindetailing.com">book@atraindetailing.com</a>
-        <a href="https://instagram.com/atraindetailing" target="_blank" rel="noopener">Instagram</a>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head"><h2>How It <span class="accent">Works</span></h2><p>Simple booking. Clear pricing. Professional results.</p></div>
+        <div class="process">
+          <div class="step"><div class="step-num">1</div><h3>Send Photos</h3><p>Send your vehicle year, make, model and a few clear photos of the interior and exterior.</p></div>
+          <div class="step"><div class="step-num">2</div><h3>Get Your Quote</h3><p>We match the vehicle to the right service and adjust for size or unusually heavy conditions.</p></div>
+          <div class="step"><div class="step-num">3</div><h3>We Come To You</h3><p>We arrive, detail the vehicle, inspect the finish and leave you with a cleaner ride.</p></div>
+        </div>
       </div>
-      <div>
-        <h4>Hours</h4>
-        <p>Mon to Sat, 8 AM to 6 PM</p>
-        <p>Sunday by request</p>
+    </section>
+
+    <section id="availability">
+      <div class="container">
+        <div class="section-head"><h2>Book Your <span class="accent">Detail</span></h2><p>Choose an available start time below. Appointment slots are limited to keep each service on schedule.</p></div>
+        <div class="booking-wrap">
+          <div class="availability-card" id="schedule">
+            <h3>Available Appointment Windows</h3>
+            <p class="tap-hint">Tap a day to see its open times.</p>
+            <div class="schedule">
+              <button type="button" class="day-row" data-dow="1"><span class="day">Monday<small></small></span><span class="blocks"><span class="open-block">8:30 AM–5:15 PM</span><span class="unavailable-block">5:15–9:30 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="2"><span class="day">Tuesday<small></small></span><span class="blocks"><span class="open-block">8:30–11:30 AM</span><span class="unavailable-block">11:30 AM–5:15 PM</span><span class="open-block">5:15–8:00 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="3"><span class="day">Wednesday<small></small></span><span class="blocks"><span class="open-block">8:30–11:00 AM</span><span class="unavailable-block">11:00 AM–4:30 PM</span><span class="open-block">4:30–8:00 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="4"><span class="day">Thursday<small></small></span><span class="blocks"><span class="open-block">8:30–11:30 AM</span><span class="unavailable-block">11:30 AM–5:15 PM</span><span class="open-block">5:15–8:00 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="5"><span class="day">Friday<small></small></span><span class="blocks"><span class="open-block">8:30 AM–5:00 PM</span><span class="unavailable-block">5:00–8:00 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="6"><span class="day">Saturday<small></small></span><span class="blocks"><span class="open-block">8:00 AM–4:00 PM</span><span class="unavailable-block">4:00–8:00 PM</span></span></button>
+              <button type="button" class="day-row" data-dow="0"><span class="day">Sunday<small></small></span><span class="blocks"><span class="open-block">8:00 AM–4:00 PM</span><span class="unavailable-block">4:00–8:00 PM</span></span></button>
+            </div>
+            <p class="availability-note">Unavailable times are intentionally blocked so appointments stay spaced out and on schedule. Exact service duration and final pricing are confirmed before the appointment.</p>
+          </div>
+
+          <div class="booking-card" id="booking">
+            <h3>Request an Appointment</h3>
+            <form class="booking-form" id="bookingForm" novalidate>
+              <div class="form-row">
+                <div>
+                  <label class="field-label" for="bookingService">Service</label>
+                  <select id="bookingService">
+                    <option value="">Choose a service</option>
+                    <option value="Maintenance Wash">Maintenance Wash — $40+</option>
+                    <option value="Exterior Detail">Exterior Detail — $60+</option>
+                    <option value="Basic Interior">Basic Interior — $70+</option>
+                    <option value="Gold Interior Revamp">Gold Interior Revamp — $100+</option>
+                    <option value="Full Interior + Exterior Detail">Full Interior + Exterior Detail — $150+</option>
+                    <option value="Headlight Restoration">Headlight Restoration — $50–80</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="bookingSize">Vehicle size</label>
+                  <select id="bookingSize">
+                    <option value="Sedan / Coupe">Sedan / Coupe</option>
+                    <option value="Small SUV">Small SUV (+$20)</option>
+                    <option value="Large SUV / Truck">Large SUV / Truck (+$40)</option>
+                    <option value="3-Row SUV / Minivan">3-Row SUV / Minivan (+$60)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="service-note" id="serviceNote" hidden></div>
+              <div>
+                <label class="field-label" for="bookingVehicle">Vehicle</label>
+                <input id="bookingVehicle" type="text" placeholder="Year / Make / Model" autocomplete="off" />
+              </div>
+              <div>
+                <span class="label-like">Add-ons (optional)</span>
+                <div class="chip-grid" id="addonChips"></div>
+              </div>
+              <div>
+                <label class="field-label" for="bookingDate">Date</label>
+                <input id="bookingDate" type="date" />
+              </div>
+              <div>
+                <span class="label-like" id="timesLabel">Available start times</span>
+                <div class="time-grid" id="timeGrid" role="radiogroup" aria-labelledby="timesLabel"></div>
+                <div class="time-note">Final duration and pricing are confirmed after your vehicle photos are reviewed.</div>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label class="field-label" for="bookingName">Name</label>
+                  <input id="bookingName" type="text" autocomplete="name" />
+                </div>
+                <div>
+                  <label class="field-label" for="bookingPhone">Phone</label>
+                  <input id="bookingPhone" type="tel" autocomplete="tel" placeholder="951-555-0123" />
+                </div>
+              </div>
+              <div class="estimate">
+                <div><span>Estimated price</span><strong id="estPrice">—</strong></div>
+                <div><span>Time needed</span><strong id="estTime">—</strong></div>
+              </div>
+              <button class="btn btn-primary" type="submit" id="submitBtn">REQUEST APPOINTMENT</button>
+              <div class="status" id="bookingStatus" aria-live="polite">Pick a service and a date to see open times.</div>
+            </form>
+
+            <div class="book-done" id="bookDone" tabindex="-1" hidden>
+              <div class="done-mark">✓</div>
+              <h4 id="doneTitle">Your time is held</h4>
+              <p class="when" id="doneText"></p>
+              <p id="doneNext"></p>
+              <div class="actions">
+                <a class="btn btn-primary" id="smsLink" href="sms:+19512069585">TEXT PHOTOS TO ADRIAN</a>
+                <button class="btn btn-secondary" type="button" id="againBtn">BOOK ANOTHER VEHICLE</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="quote-box">
+          <div>
+            <div class="eyebrow"><span class="bolt">⚡</span> Ready when you are</div>
+            <h2>Book Your <span class="accent">Detail</span></h2>
+            <p>Send your vehicle photos for an exact quote. Starting prices are listed above; final pricing is based on size, condition and requested services.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#booking">REQUEST AN APPOINTMENT</a>
+              <a class="btn btn-secondary" href="https://instagram.com/atrain.detailing" target="_blank" rel="noopener">INSTAGRAM</a>
+            </div>
+          </div>
+          <div class="contact-list">
+            <a class="contact" href="tel:+19512069585"><span>Phone</span><strong>951-206-9585</strong></a>
+            <a class="contact" href="https://instagram.com/atrain.detailing" target="_blank" rel="noopener"><span>Instagram</span><strong>@atrain.detailing</strong></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">A TRAIN DETAILING ⚡</div>
+      <div class="footer-note">Prices are starting prices. Final pricing may change based on vehicle size, condition and add-on needs. Maintenance Wash is reserved for multi-car services or returning clients.</div>
     </div>
-    <p class="copy">© <span id="year"></span> A Train Detailing</p>
-  </div>
-</footer>
+  </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-/* ========= 1. PASTE YOUR SUPABASE KEYS HERE ========= */
-const SUPABASE_URL = 'YOUR_PROJECT_URL';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
-/* ==================================================== */
+(function(){
+  // ── 1. PASTE YOUR SUPABASE KEYS HERE ──
+  // Leave them as-is and the site still works: customers just finish by text,
+  // but booked times won't be blocked for other people.
+  const SUPABASE_URL = 'https://qsovextoxfxtjozjmjru.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_pqy1nadD5G4OOZl6E1ImVA_kd9XD7st';
+  const PHONE = '+19512069585';
 
-const DEMO = SUPABASE_URL.startsWith('YOUR_') || SUPABASE_ANON_KEY.startsWith('YOUR_');
-const db = DEMO ? null : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const db = SUPABASE_URL.startsWith('http') && window.supabase
+    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    : null;
+  if (!db) console.warn('Supabase keys not set: booked times are not saved.');
 
-/* ========= 2. PRICES / PACKAGES (edit these) ========= */
-const PACKAGES = [
-  { id:'express',  name:'Express',     price:59,  time:'About 1 hr',  items:['Foam hand wash','Wheels and tires','Windows','Tire shine'] },
-  { id:'interior', name:'Interior',    price:129, time:'About 2 hrs', items:['Full vacuum','Seats and carpets shampooed','Dash and console wiped','Door jambs'] },
-  { id:'full',     name:'Full Detail', price:199, time:'About 3 hrs', items:['Clay bar','Hand wax','Leather conditioned','Trim restored'], flagship:true },
-  { id:'ceramic',  name:'Ceramic',     price:449, time:'Full day',    items:['Paint correction','Ceramic coating','Up to 2 years protection'] },
-];
-const SIZES = [
-  { id:'car', name:'Car',         add:0 },
-  { id:'suv', name:'SUV / Truck', add:25 },
-  { id:'xl',  name:'3-row / Van', add:45 },
-];
-const ADDONS = [
-  { id:'pet',       name:'Pet hair removal',      price:35 },
-  { id:'engine',    name:'Engine bay',            price:40 },
-  { id:'headlight', name:'Headlight restoration', price:60 },
-  { id:'odor',      name:'Odor treatment',        price:45 },
-];
-
-const $ = s => document.querySelector(s);
-const money = n => '$' + n.toLocaleString();
-
-/* ---------- Render packages as stops ---------- */
-$('#stopList').innerHTML = PACKAGES.map(p => `
-  <li class="stop ${p.flagship ? 'flagship' : ''}">
-    <div>
-      <h3>${p.name}</h3>
-      <div class="meta">${p.time}${p.flagship ? ' · Most booked' : ''}</div>
-      <ul>${p.items.map(i => `<li>${i}</li>`).join('')}</ul>
-    </div>
-    <div class="price">
-      <div><strong>${money(p.price)}</strong><span>starting price</span></div>
-      <button class="btn ghost small" data-pick="${p.id}">Book ${p.name}</button>
-    </div>
-  </li>`).join('');
-
-/* ---------- Render form choices ---------- */
-const choice = (type, name, id, label, right, checked) => `
-  <div class="choice">
-    <input type="${type}" name="${name}" id="${name}-${id}" value="${id}" ${checked ? 'checked' : ''}>
-    <label for="${name}-${id}"><b>${label}</b><span>${right}</span></label>
-  </div>`;
-
-$('#pkgChoices').innerHTML   = PACKAGES.map(p => choice('radio','package',p.id,p.name,money(p.price),p.flagship)).join('');
-$('#sizeChoices').innerHTML  = SIZES.map((s,i) => choice('radio','size',s.id,s.name,s.add ? '+' + money(s.add) : 'Base',i===0)).join('');
-$('#addonChoices').innerHTML = ADDONS.map(a => choice('checkbox','addon',a.id,a.name,'+' + money(a.price),false)).join('');
-
-/* ---------- Date: no same-day bookings ---------- */
-const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
-$('#date').min = tomorrow.toISOString().split('T')[0];
-
-/* ---------- Live estimate ---------- */
-const form = $('#bookingForm');
-function current(){
-  const pkg = PACKAGES.find(p => p.id === form.elements.package.value);
-  const size = SIZES.find(s => s.id === form.elements.size.value);
-  const addons = [...form.querySelectorAll('input[name=addon]:checked')].map(c => ADDONS.find(a => a.id === c.value));
-  const total = (pkg?.price || 0) + (size?.add || 0) + addons.reduce((t,a) => t + a.price, 0);
-  return { pkg, size, addons, total };
-}
-function updateTicket(){
-  const { pkg, size, addons, total } = current();
-  $('#tPkg').textContent = pkg ? pkg.name : '-';
-  $('#tSize').textContent = size ? size.name : '-';
-  $('#tAddons').textContent = addons.length ? addons.map(a => a.name).join(', ') : 'None';
-  const d = form.elements.date.value, t = form.elements.time.value;
-  $('#tWhen').textContent = d ? new Date(d + 'T12:00').toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}) + (t ? ', ' + t : '') : 'Not set';
-  $('#tTotal').textContent = money(total);
-}
-form.addEventListener('input', updateTicket);
-form.addEventListener('change', updateTicket);
-updateTicket();
-
-/* "Book Express" buttons on the stops */
-document.addEventListener('click', e => {
-  const id = e.target.dataset?.pick;
-  if (!id) return;
-  $('#package-' + id).checked = true;
-  updateTicket();
-  $('#book').scrollIntoView();
-});
-
-/* ---------- Validation ---------- */
-function check(){
-  let ok = true;
-  const rules = {
-    date:    v => !!v,
-    time:    v => !!v,
-    address: v => v.trim().length > 5,
-    name:    v => v.trim().length > 1,
-    phone:   v => v.replace(/\D/g,'').length >= 10,
-    email:   v => !v || /^\S+@\S+\.\S+$/.test(v),
+  // ── PRICES, TIMES AND HOURS (edit here) ──
+  const SERVICES = {
+    'Maintenance Wash':               { price: 40,  hours: 1,   note: 'Maintenance Wash is for multi-car services or returning clients only.' },
+    'Exterior Detail':                { price: 60,  hours: 1.5 },
+    'Basic Interior':                 { price: 70,  hours: 1.5 },
+    'Gold Interior Revamp':           { price: 100, hours: 2.5 },
+    'Full Interior + Exterior Detail':{ price: 150, hours: 4 },
+    'Headlight Restoration':          { price: 50,  max: 80, hours: 1.5, noSize: true }
   };
-  for (const [id, test] of Object.entries(rules)){
-    const field = form.elements[id].closest('.field');
-    const valid = test(form.elements[id].value);
-    field.classList.toggle('invalid', !valid);
-    if (!valid && ok){ form.elements[id].focus(); ok = false; }
+  const SIZES = { 'Sedan / Coupe': 0, 'Small SUV': 20, 'Large SUV / Truck': 40, '3-Row SUV / Minivan': 60 };
+  const ADDONS = {
+    'Headlight Restoration': { min: 50, max: 80, label: '$50–80' },
+    'Pet Hair Removal':      { min: 25, max: 75, label: '+$25–75' },
+    'Heavy Stain Treatment': { min: 20, max: 50, label: '+$20–50' },
+    'Excessive Trash':       { min: 20, max: 20, label: '+$20+', open: true },
+    'Engine Bay Cleaning':   { min: 40, max: 60, label: '$40–60' },
+    'Clay Treatment':        { min: 50, max: 50, label: '+$50' }
+  };
+  const WINDOWS = {
+    1: [['08:30','17:15']],
+    2: [['08:30','11:30'], ['17:15','20:00']],
+    3: [['08:30','11:00'], ['16:30','20:00']],
+    4: [['08:30','11:30'], ['17:15','20:00']],
+    5: [['08:30','17:00']],
+    6: [['08:00','16:00']],
+    0: [['08:00','16:00']]
+  };
+  const SLOT_STARTS = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00'];
+  const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  // ── HELPERS ──
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, '0');
+  const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  const toTime = m => `${pad(Math.floor(m / 60))}:${pad(m % 60)}`;
+  const pretty = t => { let [h, m] = t.split(':').map(Number); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return `${h}:${pad(m)} ${ap}`; };
+  const money = (min, max, open) => '$' + min + (max > min ? '–' + max : '') + (open ? '+' : '');
+  const hoursText = h => `About ${h} ${h === 1 ? 'hr' : 'hrs'}`;
+  const localISO = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const dateObj = iso => new Date(iso + 'T12:00:00');
+  const prettyDate = (iso, long) => dateObj(iso).toLocaleDateString('en-US', { weekday: 'long', month: long ? 'long' : 'short', day: 'numeric' });
+  const nowMin = () => { const n = new Date(); return n.getHours() * 60 + n.getMinutes(); };
+  const durMin = () => Math.round(SERVICES[state.service].hours * 60);
+  const listOr = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' or ' + a[a.length - 1];
+
+  const form = $('bookingForm');
+  const state = { service: null, size: 'Sedan / Coupe', addons: new Set(), time: null };
+
+  // ── ESTIMATE ──
+  function estimate() {
+    const s = SERVICES[state.service];
+    if (!s) return null;
+    const fee = s.noSize ? 0 : SIZES[state.size];
+    let min = s.price + fee, max = (s.max || s.price) + fee, open = !s.max;
+    state.addons.forEach(name => {
+      const a = ADDONS[name];
+      min += a.min; max += a.max;
+      if (a.open) open = true;
+    });
+    return { text: money(min, max, open), hours: s.hours };
   }
-  return ok;
-}
 
-/* ---------- Submit ---------- */
-form.addEventListener('submit', async e => {
-  e.preventDefault();
-  const status = $('#status');
-  status.className = 'status';
-  if (!check()) return;
+  // Redraw everything that depends on the picks, so every button stays in sync
+  function paint() {
+    const fee = SIZES[state.size];
 
-  const { pkg, size, addons, total } = current();
-  const ref = 'AT-' + Math.random().toString(36).slice(2,7).toUpperCase();
-  const booking = {
-    ref,
-    package: pkg.name,
-    vehicle_size: size.name,
-    addons: addons.map(a => a.name),
-    estimate: total,
-    booking_date: form.elements.date.value,
-    time_slot: form.elements.time.value,
-    address: form.elements.address.value.trim(),
-    name: form.elements.name.value.trim(),
-    phone: form.elements.phone.value.trim(),
-    email: form.elements.email.value.trim() || null,
-    vehicle: form.elements.vehicle.value.trim() || null,
-    notes: form.elements.notes.value.trim() || null,
-  };
+    document.querySelectorAll('.package').forEach(card => {
+      const on = card.dataset.service === state.service;
+      card.classList.toggle('selected', on);
+      const btn = card.querySelector('.pick');
+      btn.classList.toggle('btn-primary', on);
+      btn.classList.toggle('btn-secondary', !on);
+      btn.setAttribute('aria-pressed', on);
+      const price = card.querySelector('.price');
+      price.textContent = '$' + (+price.dataset.price + fee) + '+';
+    });
 
-  const btn = $('#submitBtn');
-  btn.disabled = true; btn.textContent = 'Sending request...';
+    document.querySelectorAll('.adjust').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === state.size));
 
-  try {
-    if (DEMO){
-      console.log('[demo mode] booking not saved:', booking);
-      await new Promise(r => setTimeout(r, 600));
-    } else {
-      // Insert only, no .select(): RLS only allows inserts from the public key
-      const { error } = await db.from('bookings').insert(booking);
-      if (error) throw error;
+    document.querySelectorAll('[data-addon]').forEach(el => {
+      const name = el.dataset.addon;
+      const blocked = state.service === 'Headlight Restoration' && name === 'Headlight Restoration';
+      const on = state.addons.has(name);
+      el.disabled = blocked;
+      if (el.tagName === 'BUTTON') {
+        el.setAttribute('aria-pressed', on);
+        el.title = blocked ? 'Already your main service' : '';
+      } else {
+        el.checked = on;
+      }
+    });
+
+    $('bookingService').value = state.service || '';
+    $('bookingSize').value = state.size;
+    [...$('bookingService').options].forEach(o => {
+      const s = SERVICES[o.value];
+      if (s) o.textContent = `${o.value} — ${s.noSize ? money(s.price, s.max, false) : '$' + (s.price + fee) + '+'}`;
+    });
+
+    const note = SERVICES[state.service]?.note;
+    $('serviceNote').hidden = !note;
+    $('serviceNote').textContent = note || '';
+
+    const est = estimate();
+    $('estPrice').textContent = est ? est.text : '—';
+    $('estTime').textContent = est ? hoursText(est.hours) : '—';
+  }
+
+  function setService(name) {
+    state.service = SERVICES[name] ? name : null;
+    if (state.service === 'Headlight Restoration') state.addons.delete('Headlight Restoration');
+    paint();
+    renderTimes();
+  }
+  function setSize(size) { state.size = size; paint(); }
+  function toggleAddon(name, on) {
+    if (on === undefined ? !state.addons.has(name) : on) state.addons.add(name);
+    else state.addons.delete(name);
+    paint();
+  }
+  function goToBooking() { $('booking').scrollIntoView({ block: 'start' }); }
+
+  // ── STATUS LINE ──
+  let timesMsg = ['Pick a service and a date to see open times.', false];
+  let showingProblem = false;   // a form mistake is on screen
+  function setStatus(html, isError) {
+    const s = $('bookingStatus');
+    s.innerHTML = html;
+    s.classList.toggle('error', !!isError);
+  }
+  function timesStatus(html, isError) {   // messages about open times
+    timesMsg = [html, isError];
+    showingProblem = false;
+    setStatus(html, isError);
+  }
+  function problem(html) {                 // form mistakes; cleared on the next fix
+    showingProblem = true;
+    setStatus(html, true);
+  }
+  function clearProblem() {
+    if (showingProblem) { showingProblem = false; setStatus(...timesMsg); }
+  }
+
+  // ── TIME SLOTS ──
+  const demoBooked = [];   // used when Supabase isn't connected
+  let renderId = 0;
+
+  async function bookedFor(date) {
+    if (!db) return demoBooked.filter(b => b.date === date);
+    const { data, error } = await db.rpc('booked_times', { day: date });
+    if (error) throw error;
+    return (data || []).map(b => ({ start: toMin(b.start_time.slice(0, 5)), end: toMin(b.end_time.slice(0, 5)) }));
+  }
+
+  const fitsDay = (dow, dur) => (WINDOWS[dow] || []).some(([a, b]) =>
+    SLOT_STARTS.some(t => toMin(t) >= toMin(a) && toMin(t) + dur <= toMin(b)));
+
+  function highlightDay() {
+    const d = $('bookingDate').value;
+    const dow = d ? dateObj(d).getDay() : -1;
+    document.querySelectorAll('.day-row').forEach(r => r.classList.toggle('active', +r.dataset.dow === dow));
+  }
+
+  async function renderTimes() {
+    const id = ++renderId;
+    const date = $('bookingDate').value;
+    const grid = $('timeGrid');
+    highlightDay();
+
+    if (!state.service || !date) {
+      grid.innerHTML = '';
+      timesStatus(!state.service && !date ? 'Pick a service and a date to see open times.'
+        : !state.service ? 'Pick a service to see open times.' : 'Pick a date to see open times.');
+      return;
     }
-    $('#refNum').textContent = 'Ref ' + ref;
-    $('#ticket').classList.add('booked');
-  } catch (err){
-    console.error(err);
-    status.textContent = "The booking didn't go through. Check your connection and try again, or call (909) 555-0123.";
-    status.className = 'status err';
-  } finally {
-    btn.disabled = false; btn.textContent = 'Request booking';
+    if (date < $('bookingDate').min) {
+      grid.innerHTML = '';
+      timesStatus('<strong>That date has passed.</strong> Pick today or a later date.', true);
+      return;
+    }
+
+    const dow = dateObj(date).getDay();
+    const dur = durMin();
+    const today = date === localISO(new Date());
+    const starts = SLOT_STARTS.filter(t =>
+      (WINDOWS[dow] || []).some(([a, b]) => toMin(t) >= toMin(a) && toMin(t) + dur <= toMin(b)) &&
+      !(today && toMin(t) < nowMin() + 30));
+
+    if (!starts.length) {
+      grid.innerHTML = '';
+      const days = [1, 2, 3, 4, 5, 6, 0].filter(d => fitsDay(d, dur)).map(d => DAY_NAMES[d]);
+      timesStatus(today && fitsDay(dow, dur)
+        ? '<strong>No times left today.</strong> Pick another date.'
+        : `<strong>${state.service} takes ${hoursText(SERVICES[state.service].hours).toLowerCase()}, which doesn't fit ${DAY_NAMES[dow]}'s windows.</strong> Try ${listOr(days)}.`, true);
+      return;
+    }
+
+    timesStatus('Checking open times…');
+    let taken;
+    try { taken = await bookedFor(date); }
+    catch (err) {
+      console.error(err);
+      if (id !== renderId) return;
+      grid.innerHTML = '';
+      timesStatus("<strong>Couldn't load open times.</strong> Refresh the page, or call/text 951-206-9585.", true);
+      return;
+    }
+    if (id !== renderId) return;   // a newer pick already took over
+
+    grid.innerHTML = '';
+    let open = 0;
+    starts.forEach((t, i) => {
+      const s = toMin(t), e = s + dur;
+      const booked = taken.some(b => s < b.end && e > b.start);
+      const wrap = document.createElement('div');
+      wrap.className = 'time-option' + (booked ? ' disabled' : '');
+      const input = document.createElement('input');
+      input.type = 'radio'; input.name = 'appointmentTime'; input.id = 'slot' + i; input.value = t;
+      input.disabled = booked;
+      input.checked = !booked && t === state.time;
+      const label = document.createElement('label');
+      label.htmlFor = input.id;
+      label.textContent = pretty(t);
+      if (booked) { const sm = document.createElement('small'); sm.textContent = 'Booked'; label.appendChild(sm); }
+      wrap.append(input, label);
+      grid.appendChild(wrap);
+      if (!booked) open++;
+    });
+    if (!grid.querySelector('input:checked')) state.time = null;
+
+    timesStatus(open
+      ? `<strong>${open} open start time${open === 1 ? '' : 's'}</strong> on ${prettyDate(date)}.`
+      : `<strong>${DAY_NAMES[dow]} is fully booked for this service.</strong> Pick another date.`, !open);
   }
-});
 
-$('#newBooking').addEventListener('click', () => {
-  form.reset();
-  $('#ticket').classList.remove('booked');
-  updateTicket();
-  form.scrollIntoView();
-});
+  // next date that falls on this weekday (today counts if it still has room)
+  function nextDate(dow) {
+    const d = new Date();
+    for (let i = 0; i < 8; i++) {
+      if (d.getDay() === dow) {
+        const lateToday = i === 0 && !(WINDOWS[dow] || []).some(([, b]) => toMin(b) - 60 > nowMin() + 30);
+        if (!lateToday) return localISO(d);
+      }
+      d.setDate(d.getDate() + 1);
+    }
+  }
 
-/* ---------- Misc ---------- */
-$('#year').textContent = new Date().getFullYear();
-const nav = $('#nav');
-addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 10), { passive:true });
+  // ── WIRE UP THE BUTTONS ──
+  document.querySelectorAll('.package').forEach(card => card.addEventListener('click', e => {
+    setService(card.dataset.service);
+    if (e.target.closest('.pick')) goToBooking();
+  }));
+  document.querySelectorAll('.stat').forEach(b => b.addEventListener('click', () => {
+    setService(b.dataset.service);
+    document.querySelector(`.package[data-service="${b.dataset.service}"]`).scrollIntoView({ block: 'center' });
+  }));
+  document.querySelectorAll('.adjust').forEach(b => b.addEventListener('click', () => setSize(b.dataset.size)));
+  document.querySelectorAll('.addon').forEach(b => b.addEventListener('click', () => toggleAddon(b.dataset.addon)));
+
+  document.querySelectorAll('.day-row').forEach(row => {
+    const iso = nextDate(+row.dataset.dow);
+    row.querySelector('small').textContent = iso === localISO(new Date()) ? 'Today' : dateObj(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    row.addEventListener('click', () => {
+      $('bookingDate').value = nextDate(+row.dataset.dow);
+      $('bookingDate').removeAttribute('aria-invalid');
+      state.time = null;
+      renderTimes();
+      const top = $('timeGrid').getBoundingClientRect().top;
+      if (top < 90 || top > innerHeight - 160) $('bookingDate').scrollIntoView({ block: 'center' });
+    });
+  });
+
+  // add-on chips inside the form (same list as the tiles above)
+  const chips = $('addonChips');
+  Object.entries(ADDONS).forEach(([name, a], i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'chip';
+    const input = document.createElement('input');
+    input.type = 'checkbox'; input.id = 'addon' + i; input.dataset.addon = name;
+    const label = document.createElement('label');
+    label.htmlFor = input.id;
+    label.textContent = name;
+    const b = document.createElement('b'); b.textContent = a.label;
+    label.appendChild(b);
+    wrap.append(input, label);
+    chips.appendChild(wrap);
+  });
+  chips.addEventListener('change', e => toggleAddon(e.target.dataset.addon, e.target.checked));
+
+  $('bookingService').addEventListener('change', e => setService(e.target.value));
+  $('bookingSize').addEventListener('change', e => setSize(e.target.value));
+  $('bookingDate').addEventListener('change', () => { state.time = null; renderTimes(); });
+  $('timeGrid').addEventListener('change', e => { state.time = e.target.value; clearProblem(); });
+  form.addEventListener('input', e => { e.target.removeAttribute('aria-invalid'); clearProblem(); });
+
+  // ── SUBMIT ──
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    form.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
+    const fail = (el, html) => {
+      if (el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
+      problem(html);
+    };
+    const vehicle = $('bookingVehicle').value.trim();
+    const name = $('bookingName').value.trim();
+    const phone = $('bookingPhone').value.trim();
+    const date = $('bookingDate').value;
+    const chosen = form.querySelector('input[name="appointmentTime"]:checked');
+
+    if (!state.service) return fail($('bookingService'), '<strong>Pick a service</strong> to continue.');
+    if (!vehicle) return fail($('bookingVehicle'), '<strong>Add your vehicle</strong> (year, make and model).');
+    if (!date) return fail($('bookingDate'), '<strong>Pick a date</strong> to see open times.');
+    if (!chosen) { $('timeGrid').scrollIntoView({ block: 'center' }); return fail(null, '<strong>Choose an available start time.</strong>'); }
+    if (!name) return fail($('bookingName'), '<strong>Add your name.</strong>');
+    if (phone.replace(/\D/g, '').length < 10) return fail($('bookingPhone'), '<strong>Enter a 10-digit phone number</strong> so Adrian can confirm.');
+
+    const start = chosen.value;
+    const row = {
+      customer_name: name,
+      phone,
+      vehicle,
+      vehicle_size: state.size,
+      service: state.service,
+      addons: [...state.addons],
+      appointment_date: date,
+      start_time: start,
+      end_time: toTime(toMin(start) + durMin()),
+      estimate: estimate().text
+    };
+
+    const btn = $('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'SENDING…';
+    try {
+      if (db) {
+        const { error } = await db.from('bookings').insert(row);
+        if (error) throw error;
+      } else {
+        demoBooked.push({ date, start: toMin(start), end: toMin(row.end_time) });
+        await new Promise(r => setTimeout(r, 500));
+      }
+      showDone(row);
+    } catch (err) {
+      console.error(err);
+      if (err.code === '23P01') {   // someone grabbed an overlapping time first
+        state.time = null;
+        await renderTimes();
+        problem('<strong>Someone just booked that time.</strong> Pick another open time.');
+      } else {
+        problem("<strong>Your request didn't go through.</strong> Check your connection and try again, or call/text 951-206-9585.");
+      }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'REQUEST APPOINTMENT';
+    }
+  });
+
+  function showDone(row) {
+    const lines = [
+      'Hi Adrian! I would like to request an appointment with A Train Detailing.',
+      '',
+      `Name: ${row.customer_name}`,
+      `Vehicle: ${row.vehicle} (${row.vehicle_size})`,
+      `Service: ${row.service}`,
+      ...(row.addons.length ? [`Add-ons: ${row.addons.join(', ')}`] : []),
+      `Requested date: ${prettyDate(row.appointment_date, true)}`,
+      `Requested time: ${pretty(row.start_time)}`,
+      `Estimate: ${row.estimate}`,
+      '',
+      'Photos of the vehicle are attached. I understand the final price depends on vehicle size and condition.'
+    ];
+    const sep = /iPhone|iPad|iPod/.test(navigator.userAgent) ? '&' : '?';
+    $('smsLink').href = `sms:${PHONE}${sep}body=${encodeURIComponent(lines.join('\n'))}`;
+    $('doneTitle').textContent = db ? 'Your time is held' : 'Almost booked';
+    $('doneText').textContent = `${row.service} for your ${row.vehicle}, ${prettyDate(row.appointment_date, true)} at ${pretty(row.start_time)}.`;
+    $('doneNext').textContent = db
+      ? 'Last step: text Adrian a few photos of the inside and outside so he can confirm your price.'
+      : 'Last step: text Adrian your request with a few photos of the inside and outside to lock in this time.';
+    form.hidden = true;
+    $('bookDone').hidden = false;
+    $('bookDone').focus({ preventScroll: true });
+    goToBooking();
+  }
+
+  $('againBtn').addEventListener('click', () => {
+    $('bookingVehicle').value = '';
+    state.addons.clear();
+    state.time = null;
+    $('bookDone').hidden = true;
+    form.hidden = false;
+    paint();
+    renderTimes();
+    $('bookingVehicle').focus();
+  });
+
+  // ── MOBILE MENU ──
+  const menuBtn = $('menuBtn'), menu = $('mobileMenu');
+  const setMenu = open => { menu.hidden = !open; menuBtn.setAttribute('aria-expanded', open); };
+  menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+  menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+
+  // ── START ──
+  $('bookingDate').min = localISO(new Date());
+  paint();
+  renderTimes();
+})();
 </script>
+
 </body>
 </html>
