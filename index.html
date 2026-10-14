@@ -98,6 +98,10 @@
   .package li::before{content:'✓';display:inline-grid;place-items:center;width:17px;height:17px;margin-right:7px;border-radius:50%;background:#0a82ff;color:white;font-size:.65rem;font-weight:900}
   .package .pick{margin-top:auto;width:100%;padding:11px 12px;font-size:.78rem}
   .special-note{margin-top:12px;padding:9px 10px;border:1px solid rgba(255,210,89,.6);border-radius:10px;background:rgba(255,210,89,.08);color:#ffe49a;font-size:.7rem;font-weight:800;text-align:center;text-transform:uppercase}
+  .special-note .tier{display:block;line-height:1.35}
+  .special-note .tier + .tier{margin-top:7px;padding-top:7px;border-top:1px solid rgba(255,210,89,.25)}
+  .special-note .tier b{display:block;font-size:1.1rem;color:#fff}
+  .booking-form .cash-note{margin-top:0;font-size:.8rem;letter-spacing:.08em}
 
   /* size + add-on tiles are buttons now */
   .adjust-grid,.addon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -252,7 +256,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="bolt">⚡</span> Fully Mobile • Interior • Exterior</div>
+          <div class="eyebrow"><span class="bolt">⚡</span> Fully Mobile • No Water Needed • Professional Results</div>
           <h1>A <span class="blue">TRAIN</span><br>DETAILING</h1>
           <div class="speed-line"></div>
           <p>Professional mobile car detailing with a fast, clean, polished finish. We come to you and take the work off your hands.</p>
@@ -286,45 +290,48 @@
             <h3>Maintenance Wash</h3>
             <div class="price" data-price="40">$40+</div>
             <div class="subtitle">Keeps a maintained vehicle clean &amp; fresh.</div>
-            <div class="special-note">Multi-car services or returning clients only</div>
+            <div class="special-note">
+              <span class="tier"><b data-tier="40">$40</b> Returning customers or multi-car discount</span>
+              <span class="tier"><b data-tier="60">$60</b> One-time wash</span>
+            </div>
             <ul>
-              <li>Hand wash</li><li>Wheels cleaned</li><li>Tire shine</li><li>Interior vacuum</li><li>Windows cleaned</li><li>Exterior dry</li>
+              <li>Hand wash</li><li>Wheels cleaned</li><li>Tire shine</li><li>Interior vacuum</li><li>Windows cleaned (inside &amp; out)</li><li>Exterior dry</li>
             </ul>
             <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
           </article>
           <article class="package" data-service="Exterior Detail">
             <h3>Exterior Detail</h3>
             <div class="price" data-price="60">$60+</div>
-            <div class="subtitle">A more thorough exterior clean and finish.</div>
+            <div class="subtitle">Make your exterior look its best.</div>
             <ul>
-              <li>Foam + hand wash</li><li>Wheels, tires &amp; wheel wells</li><li>Bug &amp; grime removal</li><li>Exterior glass</li><li>Door jambs</li><li>Tire shine</li><li>Spray protection</li>
+              <li>Hand wash</li><li>Wheels, tires &amp; wheel wells cleaned</li><li>Bug &amp; grime removal</li><li>Exterior windows &amp; mirrors</li><li>Door jambs</li><li>Tire shine</li><li>Spray sealant / protection</li>
             </ul>
             <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
           </article>
           <article class="package" data-service="Basic Interior">
             <h3>Basic Interior</h3>
             <div class="price" data-price="70">$70+</div>
-            <div class="subtitle">Clean, vacuumed and refreshed.</div>
+            <div class="subtitle">Clean, vacuumed, and refreshed.</div>
             <ul>
-              <li>Thorough vacuum</li><li>Dash &amp; console</li><li>Doors &amp; pockets</li><li>Cupholders &amp; storage</li><li>Interior windows</li><li>Seats &amp; floors cleaned</li>
+              <li>Thorough vacuum</li><li>Dashboard &amp; console</li><li>Doors &amp; pockets</li><li>Cupholders &amp; storage</li><li>Interior windows</li><li>Seats &amp; floors cleaned</li>
             </ul>
             <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
           </article>
           <article class="package" data-service="Gold Interior Revamp">
             <h3>Gold Interior Revamp</h3>
             <div class="price" data-price="100">$100+</div>
-            <div class="subtitle">Deep interior clean for a like-new feel.</div>
+            <div class="subtitle">Deep clean for a like-new feel.</div>
             <ul>
-              <li>Everything in Basic Interior</li><li>Deep seat &amp; carpet cleaning</li><li>Steam cleaning</li><li>Stain treatment</li><li>Odor treatment</li><li>Plastics cleaned &amp; protected</li>
+              <li>Everything in Basic Interior</li><li>Deep cleaning of seats &amp; carpets</li><li>Steam cleaning</li><li>Stain removal</li><li>Odor elimination</li><li>Plastics cleaned &amp; protected</li>
             </ul>
             <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
           </article>
           <article class="package" data-service="Full Interior + Exterior Detail">
             <h3>Full Interior + Exterior</h3>
             <div class="price" data-price="150">$150+</div>
-            <div class="subtitle">The complete transformation.</div>
+            <div class="subtitle">The ultimate transformation.</div>
             <ul>
-              <li>Everything in Gold Interior</li><li>Complete exterior detail</li><li>Wheels &amp; tires</li><li>Exterior glass</li><li>Paint protection</li><li>Finished presentation</li>
+              <li>Everything in Gold Interior</li><li>Complete exterior detail</li><li>Paint sealant protection</li><li>Air freshener upgrade</li>
             </ul>
             <button class="btn btn-secondary pick" type="button">BOOK THIS</button>
           </article>
@@ -410,7 +417,13 @@
                   </select>
                 </div>
               </div>
-              <div class="service-note" id="serviceNote" hidden></div>
+              <div id="maintTier" hidden>
+                <span class="label-like">Maintenance Wash price</span>
+                <div class="chip-grid">
+                  <div class="chip"><input type="radio" name="maintTier" id="tierOnce" value="once" checked /><label for="tierOnce">One-time wash <b data-tier="60">$60</b></label></div>
+                  <div class="chip"><input type="radio" name="maintTier" id="tierReturning" value="returning" /><label for="tierReturning">Returning customer or multi-car <b data-tier="40">$40</b></label></div>
+                </div>
+              </div>
               <div>
                 <label class="field-label" for="bookingVehicle">Vehicle</label>
                 <input id="bookingVehicle" type="text" placeholder="Year / Make / Model" autocomplete="off" />
@@ -442,6 +455,7 @@
                 <div><span>Estimated price</span><strong id="estPrice">—</strong></div>
                 <div><span>Time needed</span><strong id="estTime">—</strong></div>
               </div>
+              <div class="special-note cash-note">💵 Cash only</div>
               <button class="btn btn-primary" type="submit" id="submitBtn">REQUEST APPOINTMENT</button>
               <div class="status" id="bookingStatus" aria-live="polite">Pick a service and a date to see open times.</div>
             </form>
@@ -485,7 +499,7 @@
   <footer>
     <div class="container footer-inner">
       <div class="footer-brand">A TRAIN DETAILING ⚡</div>
-      <div class="footer-note">Prices are starting prices. Final pricing may change based on vehicle size, condition and add-on needs. Maintenance Wash is reserved for multi-car services or returning clients.</div>
+      <div class="footer-note">Prices are starting prices. Final pricing may change based on vehicle size, condition and add-on needs. Maintenance Wash is $40 for returning customers or multi-car services and $60 for a one-time wash. Cash only.</div>
     </div>
   </footer>
 
@@ -506,7 +520,7 @@
 
   // ── PRICES, TIMES AND HOURS (edit here) ──
   const SERVICES = {
-    'Maintenance Wash':               { price: 40,  hours: 1,   note: 'Maintenance Wash is for multi-car services or returning clients only.' },
+    'Maintenance Wash':               { price: 60,  returningPrice: 40, hours: 1 },   // $60 one-time, $40 returning / multi-car
     'Exterior Detail':                { price: 60,  hours: 1.5 },
     'Basic Interior':                 { price: 70,  hours: 1.5 },
     'Gold Interior Revamp':           { price: 100, hours: 2.5 },
@@ -550,14 +564,20 @@
   const listOr = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' or ' + a[a.length - 1];
 
   const form = $('bookingForm');
-  const state = { service: null, size: 'Sedan / Coupe', addons: new Set(), time: null };
+  const state = { service: null, size: 'Sedan / Coupe', addons: new Set(), time: null, returning: false };
+
+  // what gets saved and shown, e.g. "Maintenance Wash (one-time)"
+  const serviceLabel = () => state.service === 'Maintenance Wash'
+    ? `Maintenance Wash (${state.returning ? 'returning / multi-car' : 'one-time'})`
+    : state.service;
 
   // ── ESTIMATE ──
   function estimate() {
     const s = SERVICES[state.service];
     if (!s) return null;
     const fee = s.noSize ? 0 : SIZES[state.size];
-    let min = s.price + fee, max = (s.max || s.price) + fee, open = !s.max;
+    const base = s.returningPrice && state.returning ? s.returningPrice : s.price;
+    let min = base + fee, max = (s.max || base) + fee, open = !s.max;
     state.addons.forEach(name => {
       const a = ADDONS[name];
       min += a.min; max += a.max;
@@ -600,12 +620,17 @@
     $('bookingSize').value = state.size;
     [...$('bookingService').options].forEach(o => {
       const s = SERVICES[o.value];
-      if (s) o.textContent = `${o.value} — ${s.noSize ? money(s.price, s.max, false) : '$' + (s.price + fee) + '+'}`;
+      if (!s) return;
+      o.textContent = `${o.value} — ` + (
+        s.noSize ? money(s.price, s.max, false)
+        : s.returningPrice ? `$${s.price + fee}+ ($${s.returningPrice + fee}+ returning)`
+        : '$' + (s.price + fee) + '+');
     });
 
-    const note = SERVICES[state.service]?.note;
-    $('serviceNote').hidden = !note;
-    $('serviceNote').textContent = note || '';
+    // Maintenance Wash: $40 / $60 tiers follow vehicle size too
+    document.querySelectorAll('[data-tier]').forEach(el => { el.textContent = '$' + (+el.dataset.tier + fee); });
+    $('maintTier').hidden = state.service !== 'Maintenance Wash';
+    $(state.returning ? 'tierReturning' : 'tierOnce').checked = true;
 
     const est = estimate();
     $('estPrice').textContent = est ? est.text : '—';
@@ -794,6 +819,7 @@
   chips.addEventListener('change', e => toggleAddon(e.target.dataset.addon, e.target.checked));
 
   $('bookingService').addEventListener('change', e => setService(e.target.value));
+  $('maintTier').addEventListener('change', e => { state.returning = e.target.value === 'returning'; paint(); });
   $('bookingSize').addEventListener('change', e => setSize(e.target.value));
   $('bookingDate').addEventListener('change', () => { state.time = null; renderTimes(); });
   $('timeGrid').addEventListener('change', e => { state.time = e.target.value; clearProblem(); });
@@ -826,7 +852,7 @@
       phone,
       vehicle,
       vehicle_size: state.size,
-      service: state.service,
+      service: serviceLabel(),
       addons: [...state.addons],
       appointment_date: date,
       start_time: start,
@@ -880,8 +906,8 @@
     $('doneTitle').textContent = db ? 'Your time is held' : 'Almost booked';
     $('doneText').textContent = `${row.service} for your ${row.vehicle}, ${prettyDate(row.appointment_date, true)} at ${pretty(row.start_time)}.`;
     $('doneNext').textContent = db
-      ? 'Last step: text Adrian a few photos of the inside and outside so he can confirm your price.'
-      : 'Last step: text Adrian your request with a few photos of the inside and outside to lock in this time.';
+      ? 'Last step: text Adrian a few photos of the inside and outside so he can confirm your price. Payment is cash only.'
+      : 'Last step: text Adrian your request with a few photos of the inside and outside to lock in this time. Payment is cash only.';
     form.hidden = true;
     $('bookDone').hidden = false;
     $('bookDone').focus({ preventScroll: true });
